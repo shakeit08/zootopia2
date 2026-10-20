@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZOOTOPIA 2 — 투게더? 주게더!</title>
+<meta name="description" content="주토피아 2 팬픽션 시뮬봇 — RisuAI">
+<meta property="og:title" content="ZOOTOPIA 2 — 투게더? 주게더!">
+<meta property="og:description" content="주토피아 2 팬픽션 시뮬봇 · 메인 캐스트 6인 감정 에셋 30종 · ZPD 폰 상태창 · 인터랙티브 맵">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="icon" href="assets/duo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff6ec; --card:#fffdf9; --peach:#ffecd2; --peach2:#fcb69f; --sand:#f0e6dc;
+  --teal:#11998e; --teal2:#0d7c73; --mint:#38ef7d; --orange:#ff9a56; --orange2:#e85d04;
+  --ink:#2d3748; --brown:#5a4a3a; --mute:#a08060; --line:#ecdccb;
+  --l1:#e2559b; --l2:#8b4fc2; --l3:#1e6fd0; --l4:#f39a1c; --l5:#20a050; --l6:#8a5a2b; --l7:#e23a3a;
+  --disp:"Fredoka","Jua",sans-serif; --kr:"Jua","Fredoka",sans-serif; --body:"Noto Sans KR",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.7;font-size:15.5px;
+  background-image:radial-gradient(#f3d9bd 1.2px,transparent 1.3px);background-size:22px 22px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* ── transit bar ── */
+.bar{position:sticky;top:0;z-index:50;background:#fffdf9ee;backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
+.bar .in{max-width:1200px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px}
+.back{font:600 12px var(--disp);letter-spacing:.06em;color:var(--brown);border:2px solid var(--line);border-radius:20px;padding:4px 12px;white-space:nowrap;transition:.2s}
+.back:hover{border-color:var(--teal);color:var(--teal)}
+.logo{font:700 18px var(--disp);color:var(--teal);white-space:nowrap}
+.logo b{color:var(--orange2)}
+.line{flex:1;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;padding:6px 4px 18px;position:relative}
+.line::-webkit-scrollbar{display:none}
+.st{position:relative;flex:1;min-width:76px;display:flex;justify-content:center}
+.st::before{content:"";position:absolute;top:7px;left:0;right:0;height:5px;background:var(--c)}
+.st:first-child::before{left:50%;border-radius:4px 0 0 4px}.st:last-child::before{right:50%}
+.st i{position:relative;width:19px;height:19px;border-radius:50%;background:#fff;border:4px solid var(--c);transition:.25s}
+.st b{position:absolute;top:22px;font:600 10.5px var(--disp);letter-spacing:.04em;color:var(--mute);white-space:nowrap;transition:.25s}
+.st.on i{transform:scale(1.35);background:var(--c)}
+.st.on b{color:var(--ink)}
+.st:hover b{color:var(--ink)}
+@media(max-width:720px){.logo{display:none}.bar .in{gap:10px;padding:8px 12px}.st{min-width:64px}}
+
+/* ── layout ── */
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.lh{display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:8px;font:700 13px var(--disp);color:#fff;background:var(--c);border-radius:30px;padding:5px 14px 5px 6px}
+.badge i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--c);font-style:normal;font-size:12px}
+h2{font:400 clamp(28px,4vw,40px) var(--kr);line-height:1.2}
+h2 small{display:block;font:600 13px var(--disp);letter-spacing:.18em;color:var(--mute);margin-top:4px}
+.card{background:var(--card);border-radius:22px;box-shadow:0 10px 30px -12px #b4825040,0 0 0 2px var(--line)}
+
+/* ── hero ── */
+.hero{padding:26px 0 40px}
+.hcard{position:relative;border-radius:30px;overflow:hidden;min-height:min(78vh,640px);display:flex;align-items:flex-end;box-shadow:0 24px 50px -20px #b4625080}
+.hcard>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.hcard::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#2a1608cc 0%,#2a160880 38%,transparent 65%),linear-gradient(0deg,#2a1608aa,transparent 45%)}
+.hcopy{position:relative;z-index:2;padding:clamp(24px,5vw,56px);color:#fff;max-width:620px}
+.pill{display:inline-block;background:var(--teal);color:#fff;font:400 15px var(--kr);padding:5px 16px;border-radius:30px;box-shadow:0 4px 0 var(--teal2)}
+.hcopy h1{font:700 clamp(44px,7.4vw,96px) var(--disp);white-space:nowrap;line-height:.95;margin:16px 0 6px;letter-spacing:.01em;
+  color:#fff;text-shadow:0 4px 0 var(--orange2),0 10px 24px #0006}
+.hcopy h1 span{color:var(--peach)}
+.hcopy .sub{font:400 clamp(18px,2vw,22px) var(--kr);color:var(--peach)}
+.hcopy p{margin:14px 0 24px;color:#fbefe3;font-size:15px;max-width:30em}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:400 16px var(--kr);padding:12px 24px;border-radius:30px;transition:transform .15s,box-shadow .15s}
+.btn.o{background:var(--orange);color:#fff;box-shadow:0 5px 0 var(--orange2)}
+.btn.w{background:#fff;color:var(--teal);box-shadow:0 5px 0 #d7c6b4}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:translateY(3px);box-shadow:none}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}
+.stats div{background:var(--card);border-radius:18px;padding:14px 12px;text-align:center;box-shadow:0 0 0 2px var(--line)}
+.stats b{display:block;font:700 26px var(--disp);color:var(--teal);line-height:1.1}
+.stats span{font-size:12.5px;color:var(--brown)}
+@media(max-width:720px){.stats{grid-template-columns:repeat(3,1fr)}.hcard::after{background:linear-gradient(0deg,#2a1608ee 0%,#2a1608a0 50%,transparent 80%)}.hcard{min-height:560px}}
+
+/* ── cast ── */
+.cast{display:grid;grid-template-columns:220px 1fr 1.05fr;gap:20px;align-items:stretch}
+.tabs{display:flex;flex-direction:column;gap:8px}
+.tab{display:flex;align-items:center;gap:12px;padding:8px 12px 8px 8px;border-radius:18px;background:var(--card);box-shadow:0 0 0 2px var(--line);text-align:left;transition:.2s}
+.tab img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 12%;background:var(--sand);transform:scale(1);flex:none}
+.tab b{display:block;font:400 16px var(--kr);line-height:1.2}
+.tab small{font-size:11.5px;color:var(--mute)}
+.tab:hover{box-shadow:0 0 0 2px var(--orange)}
+.tab.on{background:var(--teal);color:#fff;box-shadow:0 5px 0 var(--teal2)}
+.tab.on small{color:#c9f3ec}
+.stage{position:relative;border-radius:26px;overflow:hidden;background:radial-gradient(circle at 50% 60%,#fff 0%,var(--peach) 55%,var(--peach2) 100%);min-height:440px;display:grid;place-items:end center}
+.stage::before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 50% 110%,#ffffff40 0 6deg,transparent 6deg 14deg)}
+.stage img{position:relative;width:min(100%,460px);transition:opacity .18s,transform .3s}
+.stage img.swap{opacity:0;transform:translateY(8px)}
+.stage .emo{position:absolute;top:14px;left:14px;font:600 12px var(--disp);letter-spacing:.12em;background:#fff;color:var(--orange2);padding:4px 12px;border-radius:20px;box-shadow:0 3px 0 var(--line)}
+.info{padding:24px 24px 20px}
+.info .role{font:600 12px var(--disp);letter-spacing:.14em;color:var(--orange2)}
+.info h3{font:400 30px var(--kr);line-height:1.2;margin:2px 0}
+.info h3 small{font:500 14px var(--disp);color:var(--mute);margin-left:6px}
+.info p{color:var(--brown);font-size:14.5px;margin:10px 0 16px}
+.emos{display:flex;flex-wrap:wrap;gap:6px}
+.emos button{font:500 11.5px var(--disp);padding:4px 10px;border-radius:14px;background:var(--sand);color:var(--brown);transition:.15s}
+.emos button:hover{background:var(--peach2);color:#fff}
+.emos button.on{background:var(--orange);color:#fff}
+.hint{font-size:12px;color:var(--mute);margin-top:12px}
+@media(max-width:980px){.cast{grid-template-columns:1fr}.tabs{flex-direction:row;overflow-x:auto;padding:4px 2px 8px}.tab{flex:none}.tab small{display:none}.stage{min-height:360px}}
+
+.lineup{margin-top:26px;padding:22px 22px 18px;border-radius:26px;background:#3a4656;position:relative;overflow:hidden;color:#fff}
+.lineup::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#ffffff14 0 2px,transparent 2px 36px)}
+.lineup .t{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.lineup .t b{font:400 22px var(--kr)}
+.lineup .t span{font-size:13px;color:#c8d2de}
+.lu{position:relative;display:flex;gap:4px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:#6b7889 transparent}
+.lu figure{flex:none;width:118px;text-align:center}
+.lu img{height:150px;width:100%;object-fit:contain;object-position:bottom;transition:transform .2s;transform-origin:bottom}
+.lu figure:hover img{transform:scale(1.12)}
+.lu figcaption{font:400 13px var(--kr);background:#fff;color:var(--ink);border-radius:8px;margin:6px 8px 0;padding:2px 0}
+.lu figcaption small{display:block;font:500 9.5px var(--disp);color:var(--mute);letter-spacing:.06em;margin-top:-3px}
+
+/* ── districts ── */
+.dist{display:grid;grid-template-columns:1.35fr 1fr;gap:20px}
+.view{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:16/10;background:#ddd}
+.view>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s}
+.view .who{position:absolute;bottom:0;right:6%;height:78%;transition:transform .3s,opacity .2s;transform-origin:bottom center;filter:drop-shadow(0 6px 10px #0004)}
+.view .who:hover{transform:scale(1.06)}
+.view .cap{position:absolute;left:16px;top:16px;background:#fffdf9ee;border-radius:16px;padding:8px 14px;box-shadow:0 4px 0 #0002}
+.view .cap b{display:block;font:400 20px var(--kr);line-height:1.2}
+.view .cap small{font:600 11px var(--disp);letter-spacing:.12em;color:var(--mute)}
+.ctrl{position:absolute;left:16px;bottom:16px;display:flex;gap:8px;flex-wrap:wrap}
+.seg{display:flex;background:#fffdf9ee;border-radius:20px;padding:3px;box-shadow:0 3px 0 #0002}
+.seg button{font:400 13px var(--kr);padding:4px 12px;border-radius:16px;color:var(--brown)}
+.seg button.on{background:var(--teal);color:#fff}
+.seg.av button{padding:2px;width:32px;height:32px;border-radius:50%}
+.seg.av img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:50% 12%}
+.seg.av button.on{background:var(--orange)}
+.side{display:flex;flex-direction:column;gap:14px}
+.mapbox{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 0 0 2px var(--line)}
+.mapbox img{width:100%}
+.pin{position:absolute;transform:translate(-50%,-100%);width:26px;height:34px;transition:transform .2s}
+.pin::before{content:"";position:absolute;left:3px;top:0;width:20px;height:20px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#fff;border:3px solid var(--ink);box-sizing:border-box}
+.pin.on::before{background:var(--orange2);border-color:#fff;box-shadow:0 0 0 3px var(--orange2)}
+.pin.on{transform:translate(-50%,-100%) scale(1.25);z-index:2}
+.pin.on::after{content:"";position:absolute;left:50%;bottom:4px;width:30px;height:30px;margin-left:-15px;border-radius:50%;background:var(--orange2);opacity:.35;animation:ping 1.4s ease-out infinite;z-index:-1}
+@keyframes ping{from{transform:scale(.3);opacity:.6}to{transform:scale(1.6);opacity:0}}
+.dlist{display:flex;flex-wrap:wrap;gap:6px}
+.dlist button{font:400 13.5px var(--kr);padding:5px 12px;border-radius:16px;background:var(--card);box-shadow:0 0 0 2px var(--line);transition:.15s}
+.dlist button:hover{box-shadow:0 0 0 2px var(--dc)}
+.dlist button.on{background:var(--dc);color:#fff;box-shadow:none}
+.ddesc{padding:16px 18px;border-radius:18px;background:var(--sand);font-size:14.5px;color:var(--brown)}
+.ddesc b{font:400 17px var(--kr);color:var(--dc);display:block}
+.ddesc .lock{display:inline-block;margin-top:6px;font-size:12px;background:var(--ink);color:#fff;padding:2px 10px;border-radius:10px}
+@media(max-width:980px){.dist{grid-template-columns:1fr}}
+
+.politics{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding:26px 30px;border-radius:26px;background:linear-gradient(135deg,#1e3b3a,#11998e);color:#fff}
+.politics .q{font:400 64px/1 var(--kr);opacity:.5}
+.politics h3{font:400 22px var(--kr);margin-bottom:6px}
+.politics p{color:#d6f5ef;font-size:14.5px}
+.politics p strong{color:#fff;background:#ffffff26;padding:0 6px;border-radius:6px;font-weight:500}
+.politics .ask{margin-top:10px;font:400 17px var(--kr);color:#ffe2b8}
+@media(max-width:720px){.politics{grid-template-columns:1fr;gap:6px}}
+
+/* ── case files ── */
+.files{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 20px}
+.file{position:relative;padding-top:22px}
+.file .tabf{position:absolute;top:0;left:18px;height:26px;padding:3px 14px 0;border-radius:10px 10px 0 0;background:var(--fc);color:#fff;font:600 12px var(--disp);letter-spacing:.12em}
+.file .bd{background:var(--card);border-radius:4px 20px 20px 20px;overflow:hidden;box-shadow:0 0 0 2px var(--line),0 14px 30px -18px #b4825070;height:100%;display:flex;flex-direction:column;transition:transform .2s}
+.file:hover .bd{transform:translateY(-4px) rotate(-.4deg)}
+.file .im{aspect-ratio:16/9;overflow:hidden;border-bottom:3px dashed var(--line)}
+.file .im img{width:100%;height:100%;object-fit:cover}
+.file .tx{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.file h3{font:400 22px var(--kr);color:var(--fc);line-height:1.25}
+.file p{font-size:14px;color:var(--brown);margin-top:6px}
+.file .req{margin-top:auto;padding-top:12px}
+.file .req span{display:inline-block;font-size:12px;color:#fff;background:var(--rc,var(--teal));padding:3px 10px;border-radius:8px}
+.file .stamp{position:absolute;right:14px;top:34px;font:700 12px var(--disp);letter-spacing:.14em;color:var(--orange2);border:2.5px solid var(--orange2);border-radius:6px;padding:1px 8px;transform:rotate(8deg);background:#fffdf9cc}
+@media(max-width:980px){.files{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.files{grid-template-columns:1fr}}
+
+/* ── gadgets ── */
+.gad{display:grid;grid-template-columns:330px 1fr;gap:34px;align-items:start}
+.phone{width:310px;margin:0 auto;border-radius:42px;padding:12px;background:#22303f;box-shadow:0 0 0 3px #3b4a5c,0 30px 50px -20px #22303f99;position:sticky;top:96px}
+.scr{border-radius:32px;overflow:hidden;background:#f7fbfb;height:560px;display:flex;flex-direction:column}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:10px 20px 6px;font:600 11px var(--disp);color:var(--ink)}
+.sb .notch{width:80px;height:20px;border-radius:12px;background:#22303f}
+.phd{padding:6px 18px 12px;background:linear-gradient(135deg,var(--teal),#1fb5a1);color:#fff}
+.phd b{font:700 16px var(--disp);letter-spacing:.04em}
+.phd small{display:block;font-size:11px;opacity:.85}
+.pbody{flex:1;overflow:auto;padding:14px 14px 10px}
+.pane{display:none}.pane.on{display:block}
+.row{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:12px;background:#fff;box-shadow:0 0 0 1.5px #e3eeee;margin-bottom:7px;font-size:12.5px}
+.row i{font-style:normal;width:22px;text-align:center}
+.row b{display:block;font:600 10px var(--disp);letter-spacing:.14em;color:var(--teal)}
+.pmap{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1.5px #e3eeee}
+.pmap .pin{width:20px;height:26px}.pmap .pin::before{width:16px;height:16px;left:2px}
+.bag{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bag div{background:#fff;border-radius:14px;box-shadow:0 0 0 1.5px #e3eeee;padding:12px 8px;text-align:center;font-size:12px}
+.bag div span{display:block;font-size:26px;line-height:1.3}
+.ptabs{display:flex;border-top:1.5px solid #e3eeee;background:#fff}
+.ptabs button{flex:1;padding:10px 0 14px;font:600 11.5px var(--disp);letter-spacing:.08em;color:#9aa8b0}
+.ptabs button span{display:block;font-size:18px;line-height:1.2}
+.ptabs button.on{color:var(--teal)}
+.feats{display:grid;gap:14px}
+.feat{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:20px 22px}
+.feat .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:26px;background:var(--fc2,var(--peach))}
+.feat h3{font:400 20px var(--kr);color:var(--teal)}
+.feat p{font-size:14.5px;color:var(--brown)}
+.feat .mini{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.feat .mini span{font-size:12px;background:var(--sand);padding:2px 10px;border-radius:10px;color:var(--brown)}
+@media(max-width:900px){.gad{grid-template-columns:1fr}.phone{position:static}}
+
+/* ── lorebook ── */
+.lore{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.ltab{padding:8px 8px 4px}
+.ltab .top{display:flex;justify-content:space-between;align-items:baseline;padding:14px 16px 10px}
+.ltab .top b{font:400 20px var(--kr)}
+.ltab .top span{font:700 14px var(--disp);color:var(--orange2)}
+.lr{display:grid;grid-template-columns:170px 1fr auto;gap:12px;align-items:center;padding:11px 16px;border-top:2px dashed var(--line);font-size:14px}
+.lr b{font-weight:500;color:var(--teal)}
+.lr span{color:var(--brown)}
+.lr em{font-style:normal;font-size:12px;padding:2px 10px;border-radius:10px;background:var(--sand);color:var(--mute);white-space:nowrap}
+.lr em.on{background:var(--teal);color:#fff}
+.tipc{padding:22px}
+.tipc h3{font:400 19px var(--kr);margin-bottom:8px}
+.tipc p,.tipc li{font-size:14px;color:var(--brown)}
+.tipc ul{list-style:none;display:grid;gap:8px;margin-top:6px}
+.tipc li{background:var(--sand);border-radius:12px;padding:10px 12px}
+.tipc li b{color:var(--ink);font-weight:500}
+.tip{background:var(--teal)!important;color:#fff!important;border-radius:16px;padding:14px 16px;font-size:14px;margin-top:14px}
+.tip b{font-weight:700}
+@media(max-width:900px){.lore{grid-template-columns:1fr}.lr{grid-template-columns:1fr auto}.lr span{grid-column:1/-1;grid-row:2}}
+
+/* ── note ── */
+.note{display:grid;grid-template-columns:1fr 1.1fr;border-radius:26px;overflow:hidden;background:var(--card);box-shadow:0 0 0 2px var(--line)}
+.note img{width:100%;height:100%;object-fit:cover;min-height:260px}
+.note .tx{padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;justify-content:center}
+.note h3{font:400 24px var(--kr);color:var(--teal);margin-bottom:12px}
+.note p{color:var(--brown);font-size:15.5px}
+.note p+p{margin-top:8px}
+@media(max-width:760px){.note{grid-template-columns:1fr}}
+
+.end{text-align:center;padding:60px 20px 40px}
+.end .big{font:700 clamp(40px,7vw,72px) var(--disp);color:var(--teal);line-height:1;text-shadow:0 4px 0 var(--peach2)}
+.end p{color:var(--mute);margin:10px 0 24px}
+.end .btns{justify-content:center}
+footer{text-align:center;font:600 12px var(--disp);letter-spacing:.14em;color:var(--mute);padding:22px;border-top:2px solid var(--line)}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.pin.on::after{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="in">
+  <a class="back" href="../">← ARCHIVE</a>
+  <span class="logo">ZOOTOPIA <b>2</b></span>
+  <nav class="line" id="line">
+    <a class="st" href="#top" style="--c:var(--l1)"><i></i><b>CENTRAL</b></a>
+    <a class="st" href="#zpd" style="--c:var(--l2)"><i></i><b>ZPD</b></a>
+    <a class="st" href="#districts" style="--c:var(--l3)"><i></i><b>DISTRICTS</b></a>
+    <a class="st" href="#cases" style="--c:var(--l4)"><i></i><b>CASE FILES</b></a>
+    <a class="st" href="#gadgets" style="--c:var(--l5)"><i></i><b>GADGETS</b></a>
+    <a class="st" href="#lore" style="--c:var(--l6)"><i></i><b>LOREBOOK</b></a>
+    <a class="st" href="#note" style="--c:var(--l7)"><i></i><b>NOTE</b></a>
+  </nav>
+</div></header>
+
+<!-- HERO -->
+<section class="hero" id="top" data-st="0">
+  <div class="wrap">
+    <div class="hcard">
+      <img src="assets/hero.webp" alt="">
+      <div class="hcopy">
+        <span class="pill">투게더? 주게더!</span>
+        <h1>ZOOTOPIA <span>2</span></h1>
+        <div class="sub">주토피아 2 팬픽션 시뮬봇</div>
+        <p>신참 경찰 닉과 베테랑 주디, 100주년을 맞은 도시, 그리고 100년 만에 나타난 뱀. 영화의 스토리를 따라가도, 엔딩 그 이후를 걸어도 좋아요.</p>
+        <div class="btns">
+          <a class="btn o" href="https://realm.risuai.net/character/8cfc8a3b-68ac-4a92-bbe5-3ac29ae885ab" target="_blank" rel="noopener">RisuRealm에서 받기</a>
+          <a class="btn w" href="#zpd">노선도 따라가기 →</a>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div><b>6</b><span>메인 캐스트</span></div>
+      <div><b>30</b><span>캐릭터당 감정 에셋</span></div>
+      <div><b>19</b><span>서포팅 캐스트</span></div>
+      <div><b>6</b><span>시작 시나리오</span></div>
+      <div><b>KO/EN</b><span>이중 언어</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ZPD / CAST -->
+<section id="zpd" data-st="1">
+  <div class="wrap">
+    <div class="lh rv"><span class="badge" style="--c:var(--l2)"><i>1</i>LINE 1</span><h2>캐릭터 명단<small>ZPD PRECINCT 1 · MAIN CAST</small></h2></div>
+    <div class="cast rv">
+      <div class="tabs" id="tabs"></div>
+      <div class="stage"><span class="emo" id="emo">HAPPY</span><img id="spr" src="assets/cast/Nick-happy.webp" alt=""></div>
+      <div class="card info">
+        <div class="role" id="crole"></div>
+        <h3 id="cname"></h3>
+        <p id="cdesc"></p>
+        <div class="emos" id="emos"></div>
+        <div class="hint">감정 버튼을 누르면 실제 봇에서 쓰이는 표정 에셋으로 바뀌어요.</div>
+      </div>
+    </div>
+    <div class="lineup rv">
+      <div class="t"><b>🎭 서포팅 캐스트</b><span>기본 스탠딩 에셋으로 등장하는 조연들</span></div>
+      <div class="lu" id="lu"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRICTS -->
+<section id="districts" data-st="2">
+  <div class="wrap">
+    <div class="lh rv"><span class="badge" style="--c:var(--l3)"><i>2</i>LINE 2</span><h2>주토피아의 지역들<small>CLIMATE WALLS · DISTRICTS</small></h2></div>
+    <div class="dist rv">
+      <div class="view" id="view">
+        <img class="bg" id="dbg" src="assets/bg/Savanna-Central-day.webp" alt="">
+        <img class="who" id="dwho" src="assets/cast/Judy-happy.webp" alt="">
+        <div class="cap"><b id="dname">사바나 센트럴</b><small id="den">SAVANNA CENTRAL</small></div>
+        <div class="ctrl">
+          <div class="seg" id="tod"><button data-t="day" class="on">☀️ 낮</button><button data-t="sunset">🌇 노을</button><button data-t="night">🌙 밤</button></div>
+          <div class="seg av" id="whos"></div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="mapbox" id="mapbox"><img src="assets/map.webp" alt="Zootopia map"></div>
+        <div class="dlist" id="dlist"></div>
+        <div class="ddesc" id="ddesc"></div>
+      </div>
+    </div>
+    <div class="politics rv">
+      <div class="q">⚡</div>
+      <div>
+        <h3>주토피아의 종족 정치학 — 포유류 중심 사회의 이면</h3>
+        <p>주토피아의 도시 문명은 포유류 중심으로 구축되어 있습니다. 뱀은 100년 전부터 추방되어 정치적 금기로 남아 있고, 유일한 예외는 양서류·해양 포유류·소형 도마뱀이 거주하는 특구 <strong>마쉬 마켓(Marsh Market)</strong>뿐입니다.</p>
+        <div class="ask">"종간 화합"이라는 주토피아의 이상은 과연 진정한 통합일까요?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE FILES -->
+<section id="cases" data-st="3">
+  <div class="wrap">
+    <div class="lh rv"><span class="badge" style="--c:var(--l4)"><i>3</i>LINE 3</span><h2>시작 시나리오<small>CASE FILES · 6 OPENINGS</small></h2></div>
+    <div class="files">
+      <article class="file rv" style="--fc:#fba026"><div class="tabf">CASE 01</div><div class="bd">
+        <div class="im"><img src="assets/scn/1.webp" alt="" loading="lazy"></div>
+        <div class="tx"><h3>밀수꾼 추적</h3>
+          <p>주토피아 2의 스토리를 따라갑니다. 닉이 정식으로 경찰로 임관한 지 일주일, 신참 콤비가 밀수꾼 추적 임무에서 선배들보다 먼저 출동합니다.</p>
+          <div class="req"><span>📌 메인 스토리 플롯 로어북 활성화 필요</span></div></div></div></article>
+      <article class="file rv" style="--fc:#3fa65a"><div class="tabf">CASE 02</div><div class="bd">
+        <div class="im"><img src="assets/scn/2.webp" alt="" loading="lazy"></div>
+        <div class="tx"><h3>100주년 파티</h3>
+          <p>주토피아 100주년 행사, 링슬리 저택 파티에서 캐나다스라소니 포버트 링슬리와 마주칩니다. 화려한 파티 뒤에 숨겨진 비밀은?</p></div></div></article>
+      <article class="file rv" style="--fc:#b8312f"><div class="tabf">CASE 03</div><div class="bd">
+        <div class="im"><img src="assets/scn/3.webp" alt="" loading="lazy"></div>
+        <div class="tx"><h3>음모론자의 초대</h3>
+          <p>음모론자 비버 니블스 메이플스틱의 팟캐스트에 초청받습니다. 무슨 일이 일어날까요?</p></div></div></article>
+      <article class="file rv" style="--fc:#2f8f55"><div class="tabf">CASE 04</div><span class="stamp">02:15 AM</span><div class="bd">
+        <div class="im"><img src="assets/scn/4.webp" alt="" loading="lazy"></div>
+        <div class="tx"><h3>불가능한 뱀</h3>
+          <p>100년 동안 주토피아에 발을 들인 적 없는 뱀, 게리 더 스네이크. 새벽 2시 15분, 툰드라타운 부두에서 그가 가족의 무고함을 증명해 달라고 요청합니다.</p>
+          <div class="req" style="--rc:var(--orange2)"><span>🐍 100년 묵은 거짓말, 눈 아래 파묻힌 특허</span></div></div></div></article>
+      <article class="file rv" style="--fc:#e0a800"><div class="tabf">CASE 05</div><div class="bd">
+        <div class="im"><img src="assets/scn/5.webp" alt="" loading="lazy"></div>
+        <div class="tx"><h3>After Everything</h3>
+          <p>모든 일이 끝난 뒤. 링슬리 왕조 몰락, 렙타일 래빈 재개방, 윈드댄서 시장의 통합 선언. 사바나 센트럴의 황금빛 노을 아래, 누군가를 만나러 갑니다…</p>
+          <div class="req"><span>📌 After Everything 로어북 활성화 필요</span></div></div></div></article>
+      <article class="file rv" style="--fc:#8c8c8c"><div class="tabf">CASE 06</div><div class="bd">
+        <div class="im"><img src="assets/scn/6.webp" alt="" loading="lazy"></div>
+        <div class="tx"><h3>자유 시작</h3>
+          <p>빈 퍼스트 메시지. 원하는 대로 자유롭게 시작하세요.</p></div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- GADGETS -->
+<section id="gadgets" data-st="4">
+  <div class="wrap">
+    <div class="lh rv"><span class="badge" style="--c:var(--l5)"><i>4</i>LINE 4</span><h2>시스템 기능<small>GADGETS · ZPD ISSUE</small></h2></div>
+    <div class="gad">
+      <div class="phone rv">
+        <div class="scr">
+          <div class="sb"><span>13:42</span><span class="notch"></span><span>📶 🔋</span></div>
+          <div class="phd"><b>ZPD · PHONE</b><small>Officer Hopps · Precinct 1</small></div>
+          <div class="pbody">
+            <div class="pane on" data-p="status">
+              <div class="row"><i>📅</i><div><b>DATE · TIME</b>화요일 · 13:42</div></div>
+              <div class="row"><i>☀️</i><div><b>WEATHER</b>맑음 · 사바나 센트럴 24℃</div></div>
+              <div class="row"><i>📍</i><div><b>LOCATION</b>운하 지구, 스누틀리 앤 선즈 창고 앞</div></div>
+              <div class="row"><i>👕</i><div><b>OUTFIT</b>분홍 민소매 · 'Don't Worry, Be Happy' 보라 타이츠</div></div>
+              <div class="row"><i>👥</i><div><b>CAST</b>닉 와일드 · 주디 홉스 · 피닉</div></div>
+              <div class="row"><i>📝</i><div><b>MEMO</b>14시 정각 캣닙 이동. 서장님께는… 나중에 보고.</div></div>
+            </div>
+            <div class="pane" data-p="map">
+              <div class="pmap"><img src="assets/map.webp" alt=""><span class="pin on" style="left:14%;top:22%"></span></div>
+              <div class="row" style="margin-top:10px"><i>📍</i><div><b>NOW</b>Canal District — 운하 지구</div></div>
+              <div class="row"><i>🔒</i><div><b>LOCKED</b>Reptile Ravine — After Everything에서 활성화</div></div>
+            </div>
+            <div class="pane" data-p="bag">
+              <div class="bag">
+                <div><span>🥕</span>당근 펜 녹음기</div>
+                <div><span>🪪</span>ZPD 배지</div>
+                <div><span>📻</span>무전기</div>
+                <div><span>🔦</span>열화상 카메라</div>
+                <div><span>🍼</span>공갈 젖꼭지<br><small style="color:#9aa8b0">(피닉 것)</small></div>
+                <div><span>🧾</span>스누틀리 송장</div>
+              </div>
+            </div>
+          </div>
+          <div class="ptabs" id="ptabs"><button class="on" data-p="status"><span>📋</span>STATUS</button><button data-p="map"><span>🗺️</span>MAP</button><button data-p="bag"><span>🎒</span>BAG</button></div>
+        </div>
+      </div>
+      <div class="feats">
+        <div class="card feat rv" style="--fc2:#ffe0cc"><div class="ic">🖼️</div><div><h3>다이내믹 이미지 시스템</h3>
+          <p>캐릭터 에셋과 배경 에셋이 분리되어, 현재 장소에 따라 배경이 자동으로 바뀌어요. 호버링 시 확대 효과 지원 — 위 <a href="#districts" style="color:var(--teal);text-decoration:underline">지역 노선</a>에서 직접 체험해 보세요.</p>
+          <div class="mini"><span>배경 + 캐릭터 분리 렌더링</span><span>낮 · 노을 · 밤</span><span>2인 출력 시 종족별 체격 반영</span></div></div></div>
+        <div class="card feat rv" style="--fc2:#d3f3ee"><div class="ic">📱</div><div><h3>ZPD 폰 상태창</h3>
+          <p>스마트폰 UI 형태의 상태창. 왼쪽 폰처럼 탭을 눌러 확인할 수 있어요.</p>
+          <div class="mini"><span>Status — 날짜·시간·날씨·의상·등장인물·메모</span><span>Map — 현재 위치 핑</span><span>Bag — 소지 아이템</span></div></div></div>
+        <div class="card feat rv" style="--fc2:#dfe9fb"><div class="ic">🗺️</div><div><h3>위치 기반 핑 시스템</h3>
+          <p>주토피아 전역 지도에서 현재 위치가 핑으로 표시돼요. 원작 스토리 / After Everything에 따라 활성화되는 핑이 달라요.</p>
+          <div class="mini"><span>예: Reptile Ravine은 After Everything에서만 활성화</span></div></div></div>
+        <div class="card feat rv" style="--fc2:#fde9c4"><div class="ic">🎬</div><div><h3>퍼스트 메시지 선택</h3>
+          <p>시작할 때 6개 시나리오 중 하나를 고르고, 한국어 / English 버튼으로 언어를 전환할 수 있어요. 모든 시나리오가 두 언어로 제공돼요.</p></div></div>
+        <div class="card feat rv" style="--fc2:#f3e0f7"><div class="ic">📖</div><div><h3>5,800+ 토큰 메인 플롯</h3>
+          <p>주토피아 2의 디테일한 스토리 플롯을 따라가는 몰입형 경험. 엔딩 이후의 이야기(After Everything)도 별도로 제공돼요.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOREBOOK -->
+<section id="lore" data-st="5">
+  <div class="wrap">
+    <div class="lh rv"><span class="badge" style="--c:var(--l6)"><i>5</i>LINE 5</span><h2>로어북 설정 가이드<small>LOREBOOK · SETUP</small></h2></div>
+    <div class="lore">
+      <div class="card ltab rv">
+        <div class="top"><b>📋 로어북 구조</b><span>약 22,500 토큰</span></div>
+        <div class="lr"><b>⚙️ system</b><span>Assets, Status, 생물 로어북, 퍼리 묘사</span><em class="on">항상 활성화</em></div>
+        <div class="lr"><b>🎨 Custom</b><span>커스텀 로어북</span><em>사용자 추가용</em></div>
+        <div class="lr"><b>🏛️ 주토피아의 지역</b><span>각 지역 상세 설정</span><em>선택 활성화</em></div>
+        <div class="lr"><b>📖 주토피아 2 스토리 플롯</b><span>메인 스토리 (~5,800 토큰)</span><em>원작 스토리 진행 시</em></div>
+        <div class="lr"><b>🔮 After Everything</b><span>엔딩 이후 설정 (~550 토큰)</span><em>엔딩 후 스토리 시</em></div>
+        <div class="lr"><b>👥 등장인물</b><span>캐릭터 상세 설정</span><em>선택 활성화</em></div>
+      </div>
+      <div class="card tipc rv">
+        <h3>📍 정규식 핑 설정</h3>
+        <p>스토리 진행에 따라 맵 핑을 조절하세요.</p>
+        <ul>
+          <li><b>주토피아 2 스토리 진행 시</b><br>After Everything 핑 비활성화</li>
+          <li><b>After Everything 진행 시</b><br>기본 핑 비활성화, After Everything 핑 활성화</li>
+        </ul>
+        <p style="font-size:12.5px;color:var(--mute);margin-top:8px">현재 기본값: After Everything 정규식 활성화 상태</p>
+        <div class="tip"><b>💡 권장</b> — 원작 스토리를 따라가려면 <b>주토피아 2 스토리 플롯</b>, 엔딩 이후를 즐기려면 <b>After Everything</b> 활성화. 둘 다 꺼도 플레이할 수 있어요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTE -->
+<section id="note" data-st="6" style="padding-bottom:20px">
+  <div class="wrap">
+    <div class="lh rv"><span class="badge" style="--c:var(--l7)"><i>6</i>LINE 6</span><h2>제작자의 말<small>LAST STOP · NOTE</small></h2></div>
+    <div class="note rv">
+      <img src="assets/duo.webp" alt="" loading="lazy">
+      <div class="tx">
+        <h3>💌</h3>
+        <p>주토피아 2를 바탕으로 한 2차 창작 팬픽션 시뮬봇임…</p>
+        <p>최대한 주토피아 2의 내용을 담으면서 영화의 느낌을 살리려고 노력했음 흑흑<br>특히 이거 만들면서 루아 트리거나 정규식 공부 많이 한 듯</p>
+        <p>그리고 피드백 많이 준 챗챈 유저들… 감사합니다…..</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="end rv">
+  <div class="big">🦊 🐰</div>
+  <div class="big" style="font-size:clamp(30px,5vw,48px);margin-top:8px">ZOOTOPIA 2</div>
+  <p>팬픽션 롤플레이 시뮬봇 · v1.5 · RisuAI</p>
+  <div class="btns">
+    <a class="btn o" href="https://realm.risuai.net/character/8cfc8a3b-68ac-4a92-bbe5-3ac29ae885ab" target="_blank" rel="noopener">RisuRealm에서 받기</a>
+    <a class="btn w" href="../">← 보관함으로</a>
+  </div>
+</div>
+<footer>ZOOTOPIA 2 · FAN FICTION SIM BOT · MADE FOR RISUAI</footer>
+
+<script>
+/* main cast */
+const CAST=[
+ {k:'Nick',ko:'닉 와일드',en:'Nick Wilde',e:'🦊',role:'ZPD 경찰관 · 붉은여우',d:'전직 사기꾼에서 ZPD 최초의 여우 경찰관이 된 닉. 임관한 지 일주일 된 신참이지만, 거리의 경험과 날카로운 위트로 무장하고 있어요. 주디와 콤비를 이루어 활동합니다.'},
+ {k:'Judy',ko:'주디 홉스',en:'Judy Hopps',e:'🐰',role:'ZPD 경찰관 · 토끼',d:'버니버로우 출신의 열정적인 토끼 경찰관. 주토피아 최초의 토끼 경찰로서 도시의 영웅이 되었어요. 정의감이 넘치고 끈기 있는 성격.'},
+ {k:'Pawbert',ko:'포버트 링슬리',en:'Pawbert Lynxley',e:'🐱',role:'링슬리 가문 · 캐나다스라소니',d:'주토피아의 명문 링슬리 가문의 일원이자 100주년 기념 파티의 핵심 인물. 가문에 얽힌 100년의 비밀과 연결되어 있어요.'},
+ {k:'Gary',ko:'게리 더 스네이크',en:"Gary De'Snake",e:'🐍',role:'방문자 · 살무사',d:'100년 만에 주토피아에 발을 디딘 뱀. 10미터에 달하는 푸른 비늘의 살무사로, 가족의 무고함을 증명하기 위해 왔어요. 뱀 추방의 진실을 알고 있는 열쇠.'},
+ {k:'Nibbles',ko:'니블스 메이플스틱',en:'Nibbles Maplestick',e:'🦫',role:'음모론 팟캐스터 · 비버',d:'주류 사회에서 무시당하는 진실을 파헤치는 것을 사명으로 삼은 음모론 팟캐스터. 과연 그의 이론은 광기일까, 통찰일까?'},
+ {k:'Winddancer',ko:'윈드댄서',en:'Winddancer',e:'🐴',role:'주토피아 시장 · 말',d:'주토피아의 새로운 시장. 멋진 액션 영화배우 출신입니다만… 실제로도 그럴까요?'}
+];
+const EM='happy excited proud smirking curious thinking determined relieved lovestruck shy embarrassed surprised shocked confused nervous worried scared annoyed angry jealous disgusted bored sleepy exhausted emotionless sad crying depressed painful'.split(' ');
+let ci=0,ce='happy';
+const $=id=>document.getElementById(id);
+const spr=$('spr');
+function showSprite(){spr.classList.add('swap');const im=new Image();im.onload=()=>{spr.src=im.src;spr.classList.remove('swap')};im.src=`assets/cast/${CAST[ci].k}-${ce}.webp`;$('emo').textContent=ce.toUpperCase();
+  [...$('emos').children].forEach(b=>b.classList.toggle('on',b.dataset.e===ce))}
+function pick(i){ci=i;const c=CAST[i];$('crole').textContent=c.role;$('cname').innerHTML=`${c.e} ${c.ko}<small>${c.en}</small>`;$('cdesc').textContent=c.d;
+  [...$('tabs').children].forEach((t,k)=>t.classList.toggle('on',k===i));ce='happy';showSprite()}
+CAST.forEach((c,i)=>{const b=document.createElement('button');b.className='tab';b.innerHTML=`<img src="assets/cast/${c.k}-happy.webp" alt=""><span><b>${c.ko}</b><small>${c.en}</small></span>`;b.onclick=()=>pick(i);$('tabs').append(b)});
+EM.forEach(e=>{const b=document.createElement('button');b.textContent=e;b.dataset.e=e;b.onclick=()=>{ce=e;showSprite()};$('emos').append(b)});
+pick(0);
+
+/* supporting */
+const SUP=[['Bogo','보고 서장'],['Clawhauser','클로하우저'],['Higgins','히긴스'],['Finnick','피닉'],['Flash','플래시'],['Mr_Big','미스터 빅'],['Fru_Fru','프루프루'],['Hoggbottom','호그바텀'],['Truffler','트러플러'],['Zebros','지브로스'],['Bucheron','뷰세론'],['Chevre','셰브르'],['Bloats','블로츠'],['Milton','밀턴'],['Cattrick','캣트릭'],['Kitty','키티'],['Jesus','헤수스'],['Russ','러스'],['Fuzzby','퍼즈비']];
+SUP.forEach(([k,ko])=>$('lu').insertAdjacentHTML('beforeend',`<figure><img src="assets/sup/${k}.webp" alt="${ko}" loading="lazy"><figcaption>${ko}<small>${k.replace('_',' ')}</small></figcaption></figure>`));
+
+/* districts */
+const D=[
+ {k:'Savanna-Central',ko:'사바나 센트럴',c:'#d4a04a',d:'도심 중심부. 100주년을 맞은 주토피아의 심장.',p:[24,80]},
+ {k:'Tundratown',ko:'툰드라타운',c:'#4a90d9',d:'영하의 설원 지대, 미스터 빅의 영역.',p:[75,29]},
+ {k:'Rainforest-District',ko:'레인포레스트',c:'#4db870',d:'습한 열대우림 디스트릭트.',p:[38,34]},
+ {k:'Sahara-Square',ko:'사하라 스퀘어',c:'#e8a838',d:'뜨거운 사막 기후의 구역.',p:[70,62]},
+ {k:'Marsh-Market',ko:'마쉬 마켓',c:'#6aa870',d:'비포유류 특구. 양서류·해양 포유류·소형 도마뱀 같은 수생 생물이 거주해요.',p:[14,22]},
+ {k:'Zootopia-Police-Department',ko:'ZPD 본부',c:'#11998e',d:'주토피아 경찰국 제1분서. 닉과 주디의 일터.',p:[40,55]},
+ {k:'Little-Rodentia',ko:'리틀 로덴시아',c:'#a080c0',d:'소형 동물 전용 구역.'},
+ {k:'Lynxley-Manor',ko:'링슬리 저택',c:'#8a5a9b',d:'명문 링슬리 가문의 저택. 100주년 기념 파티가 열리는 곳.'},
+ {k:'Reptile-Ravine',ko:'파충류 협곡',c:'#a05050',d:'폐쇄된 파충류 구역. 스토리의 핵심.',lock:1}
+];
+let di=0,tod='day',who=1;
+const WHO=[null,...CAST.map(c=>c.k)];
+WHO.forEach((k,i)=>{const b=document.createElement('button');b.title=k||'없음';b.innerHTML=k?`<img src="assets/cast/${k}-happy.webp" alt="">`:'✕';b.onclick=()=>{who=i;renderD()};$('whos').append(b)});
+D.forEach((d,i)=>{const b=document.createElement('button');b.textContent=d.ko;b.style.setProperty('--dc',d.c);b.onclick=()=>{di=i;renderD()};$('dlist').append(b);
+  if(d.p){const p=document.createElement('button');p.className='pin';p.style.left=d.p[0]+'%';p.style.top=d.p[1]+'%';p.title=d.ko;p.onclick=()=>{di=i;renderD()};p.dataset.i=i;$('mapbox').append(p)}});
+document.querySelectorAll('#tod button').forEach(b=>b.onclick=()=>{tod=b.dataset.t;renderD()});
+function renderD(){const d=D[di];const bg=$('dbg');bg.style.opacity=.3;const im=new Image();im.onload=()=>{bg.src=im.src;bg.style.opacity=1};im.src=`assets/bg/${d.k}-${tod}.webp`;
+  $('dname').textContent=d.ko;$('den').textContent=d.k.replace(/-/g,' ').toUpperCase();
+  const w=$('dwho');if(WHO[who]){w.style.opacity=1;w.src=`assets/cast/${WHO[who]}-happy.webp`}else w.style.opacity=0;
+  [...$('dlist').children].forEach((b,k)=>b.classList.toggle('on',k===di));
+  document.querySelectorAll('#mapbox .pin').forEach(p=>p.classList.toggle('on',+p.dataset.i===di));
+  document.querySelectorAll('#tod button').forEach(b=>b.classList.toggle('on',b.dataset.t===tod));
+  [...$('whos').children].forEach((b,k)=>b.classList.toggle('on',k===who));
+  const dd=$('ddesc');dd.style.setProperty('--dc',d.c);dd.innerHTML=`<b>${d.ko}</b>${d.d}${d.p?'':`<br><span class="lock">${d.lock?'🔒 After Everything에서 핑 활성화':'📍 지도 밖 구역'}</span>`}`}
+renderD();
+
+/* phone tabs */
+document.querySelectorAll('#ptabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#ptabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.dataset.p===b.dataset.p))});
+
+/* transit bar + reveal */
+const sts=[...document.querySelectorAll('.st')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=+e.target.dataset.st;sts.forEach((s,k)=>s.classList.toggle('on',k===i));const L=document.getElementById('line'),t=sts[i];L.scrollTo({left:t.offsetLeft-L.clientWidth/2+t.clientWidth/2,behavior:'smooth'})}}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('[data-st]').forEach(s=>so.observe(s));
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
